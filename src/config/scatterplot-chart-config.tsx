@@ -1,5 +1,4 @@
 import { ChartConfiguration, ChartTypeRegistry, Point } from "chart.js/auto";
-import { MockScatterData } from "~/types/plottypes";
 import type { scatterData } from "~/types/plottypes";
 
 const formatData = (scatterdata: scatterData[]) => {
@@ -35,7 +34,7 @@ const formatData = (scatterdata: scatterData[]) => {
         unit = "1:100";
         break;
       case "eff":
-        d.value = d.value * (1 / 1);
+        d.value = d.value * (1 / 100);
         unit = "1:1";
         break;
       case "RPM":
@@ -57,45 +56,52 @@ const formatData = (scatterdata: scatterData[]) => {
     ],
   };
 };
-const mockData = MockScatterData();
-const wattData = mockData.filter((d) => d.type === "watts");
-const ampData = mockData.filter((d) => d.type === "amps");
-const voltData = mockData.filter((d) => d.type === "volts");
-const effData = mockData.filter((d) => d.type === "eff");
-const RPMData = mockData.filter((d) => d.type === "RPM");
 
-const data = formatData(wattData);
-data.datasets = data.datasets
-  .concat(formatData(ampData).datasets)
-  .concat(formatData(voltData).datasets)
-  .concat(formatData(effData).datasets)
-  .concat(formatData(RPMData).datasets);
-
-export const scatterplotConfig: ChartConfiguration<
+export const getScatterplotConfig = (
+  scatterplotDataTemp: scatterData[],
+): ChartConfiguration<
   keyof ChartTypeRegistry,
   (number | Point | null)[],
   unknown
-> = {
-  type: "scatter",
-  data: data,
-  options: {
-    scales: {
-      y: {
-        type: "linear",
-        position: "left",
-        title: {
-          display: true,
-          text: "Værdi",
+> => {
+  const scatterplotData = JSON.parse(
+    JSON.stringify(scatterplotDataTemp),
+  ) as scatterData[];
+  const wattData = scatterplotData.filter((d) => d.type === "watts");
+  const ampData = scatterplotData.filter((d) => d.type === "amps");
+  const voltData = scatterplotData.filter((d) => d.type === "volts");
+  const effData = scatterplotData.filter((d) => d.type === "eff");
+  const RPMData = scatterplotData.filter((d) => d.type === "RPM");
+  const formattedData = formatData(wattData);
+  formattedData.datasets = formattedData.datasets
+    .concat(formatData(ampData).datasets)
+    .concat(formatData(voltData).datasets)
+    .concat(formatData(effData).datasets)
+    .concat(formatData(RPMData).datasets);
+  return {
+    type: "scatter",
+    data: formattedData,
+    options: {
+      scales: {
+        y: {
+          type: "linear",
+          position: "left",
+          title: {
+            display: true,
+            text: "Værdi",
+          },
+          max: 1,
+          min: 0,
         },
-      },
-      x: {
-        type: "linear",
-        position: "bottom",
-        title: {
-          display: true,
-          text: "TIME",
+        x: {
+          type: "linear",
+          position: "bottom",
+          title: {
+            display: true,
+            text: "TIME",
+          },
         },
       },
     },
-  },
+  };
 };
