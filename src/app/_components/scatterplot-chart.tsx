@@ -1,11 +1,14 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import { scatterplotConfig } from "~/config/scatterplot-chart-config";
-import type { scatterData } from "~/types/plottypes";
-import { MockScatterData } from "~/types/plottypes";
+import { getScatterplotConfig } from "~/config/scatterplot-chart-config";
+import { scatterData } from "~/types/plottypes";
 
-const ScatterPlotChart = () => {
+interface ScatterPlotChartProps {
+  data: scatterData[];
+}
+
+const ScatterPlotChart = (props: ScatterPlotChartProps) => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -13,7 +16,7 @@ const ScatterPlotChart = () => {
     if (chartRef.current) {
       const ctx = chartRef.current.getContext("2d");
       if (ctx) {
-        myChart = new Chart(ctx, scatterplotConfig);
+        myChart = new Chart(ctx, getScatterplotConfig(props.data));
       }
     }
 
