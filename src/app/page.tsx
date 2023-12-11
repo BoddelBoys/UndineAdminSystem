@@ -2,6 +2,7 @@
 import LineChart from "./_components/line-chart";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import BarChart from "./_components/bar-chart";
 
 async function getData() {
   const res = await fetch('https://localhost:7054/1/status')
@@ -25,7 +26,8 @@ export default async function Home() {
   return (
     
     <main className="">
-      <LineChart></LineChart>
+      {/* <LineChart></LineChart>Test: */}
+      <BarChart></BarChart> 
     </main>
   );
 }

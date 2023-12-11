@@ -1,4 +1,3 @@
-// LineChart.tsx
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js/auto";
@@ -7,8 +6,8 @@ import getLineChartConfig from "../../config/line-chart-config"
 
 
 const LineChart: React.FC = () =>  {
-  const chartRef = useRef<HTMLCanvasElement>(null); 
-  const [data, setData] = useState<BoatStatus[]>([]);
+const chartRef = useRef<HTMLCanvasElement>(null); 
+const [data, setData] = useState<BoatStatus[]>([]);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +48,7 @@ const LineChart: React.FC = () =>  {
   }, [data]);
     
   const myChart = useRef<Chart | null>(null);
-
+  
   return (
     <div>
         <canvas ref={chartRef} />

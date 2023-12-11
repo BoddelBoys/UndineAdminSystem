@@ -76,8 +76,6 @@ const getLineChartConfig = (
         min: 0,
         max: 100,
     }}  
-  
-
   }}
 };
 
