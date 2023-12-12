@@ -51,6 +51,11 @@ export const NavBar = () => {
                 <Link href="/boatsystems">Boatsystems</Link>
               </button>
             </li>
+            <li className="py-2">
+              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
+                <Link href="/boatsystems">Barchart</Link>
+              </button>
+            </li>
           </ul>
         </div>
       </div>

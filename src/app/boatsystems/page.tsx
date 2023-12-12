@@ -1,6 +1,5 @@
 import { getBoatSystemsData } from "~/server/boatsystems";
 import BoatSystems from "../_components/boatsystems";
-import { useEffect } from "react";
 
 export default async function Home() {
   const data = await getBoatSystemsData();
