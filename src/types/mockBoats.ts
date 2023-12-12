@@ -1,54 +1,54 @@
 export interface BmsLog {
-    timestamp: Date;
-    maxAllowableChargingVoltage: string;
-    maxAllowableChargingCurrent: string;
-    control: string;
-    minCellVoltage: string;
-    averageCellVoltage: string;
-    totalVoltage: string;
-    current: string;
-    estimatedCharge: string;
-    estimatedStateOfCharge: string;
+    Timestamp: Date;
+    MaxAllowableChargingVoltage: string;
+    MaxAllowableChargingCurrent: string;
+    Control: string;
+    MinCellVoltage: string;
+    AverageCellVoltage: string;
+    TotalVoltage: string;
+    Current: string;
+    EstimatedCharge: string;
+    EstimatedStateOfCharge: string;
 }
 
 export interface ChargerLog {
-    timestamp: Date;
-    outputVoltage: string;
-    outputChargingVoltage: string;
-    outputCurrent: string;
-    chargerStatus: string;
+    Timestamp: Date;
+    OutputVoltage: string;
+    OutputChargingVoltage: string;
+    OutputCurrent: string;
+    ChargerStatus: string;
 }
 
 export interface CoreMCULog {
-    timestamp: Date;
-    mosfet: string;
-    outputVoltage: string;
+    Timestamp: Date;
+    Mosfet: string;
+    OutputVoltage: string;
 }
 
 export interface MotorLog {
-    timestamp: Date;
-    actualRPM: string;
-    batteryCurrent: string;
-    faultCode: string;
-    subcode: string;
-    motorCurrent: string;
-    driveStatusIndicator: string;
-    speedLimitIndicator: string;
-    actualTorque: string;
-    torqueLimitIndicator: string;
-    controllerTemperature: string;
-    motorTemperature: string;
-    motorLimitIndicator: string;
-    batteryVoltage: string;
-    digitalOutputStatus: string;
-    batteryDischargeIndicator: string;
+    Timestamp: Date;
+    ActualRPM: string;
+    BatteryCurrent: string;
+    FaultCode: string;
+    Subcode: string;
+    MotorCurrent: string;
+    DriveStatusIndicator: string;
+    SpeedLimitIndicator: string;
+    ActualTorque: string;
+    TorqueLimitIndicator: string;
+    ControllerTemperature: string;
+    MotorTemperature: string;
+    MotorLimitIndicator: string;
+    BatteryVoltage: string;
+    DigitalOutputStatus: string;
+    BatteryDischargeIndicator: string;
 }
 
 export interface ThrottleLog {
-    timestamp: Date;
-    motorSpeed: string;
-    currentAngle: string;
-    targetAngle: string;
+    Timestamp: Date;
+    MotorSpeed: string;
+    CurrentAngle: string;
+    TargetAngle: string;
 }
 
 export interface BoatData {
@@ -62,55 +62,55 @@ export interface BoatData {
 }
 
 const generateBmsLog = (): BmsLog => ({
-    timestamp: new Date(),
-    maxAllowableChargingVoltage: '12.5',
-    maxAllowableChargingCurrent: '10',
-    control: 'On',
-    minCellVoltage: '3.2',
-    averageCellVoltage: '3.5',
-    totalVoltage: '48',
-    current: '5',
-    estimatedCharge: '80',
-    estimatedStateOfCharge: 'High',
+    Timestamp: new Date(),
+    MaxAllowableChargingVoltage: '12.5',
+    MaxAllowableChargingCurrent: '10',
+    Control: 'On',
+    MinCellVoltage: '3.2',
+    AverageCellVoltage: '3.5',
+    TotalVoltage: '48',
+    Current: '5',
+    EstimatedCharge: '80',
+    EstimatedStateOfCharge: 'High',
   });
 const generateChargerLog = (): ChargerLog => ({
-    timestamp: new Date(),
-    outputVoltage: '13.5',
-    outputChargingVoltage: '12',
-    outputCurrent: '8',
-    chargerStatus: 'Charging',
+    Timestamp: new Date(),
+    OutputVoltage: '13.5',
+    OutputChargingVoltage: '12',
+    OutputCurrent: '8',
+    ChargerStatus: 'Charging',
 });
 
 const generateCoreMCULog = (): CoreMCULog => ({
-    timestamp: new Date(),
-    mosfet: '100',
-    outputVoltage: '12',
+    Timestamp: new Date(),
+    Mosfet: '100',
+    OutputVoltage: '12',
 });
 
 const generateMotorLog = (): MotorLog => ({
-    timestamp: new Date(),
-    actualRPM: '2000',
-    batteryCurrent: '10',
-    faultCode: 'None',
-    subcode: 'None',
-    motorCurrent: '15',
-    driveStatusIndicator: 'On',
-    speedLimitIndicator: 'Off',
-    actualTorque: '20',
-    torqueLimitIndicator: 'Off',
-    controllerTemperature: '40',
-    motorTemperature: '50',
-    motorLimitIndicator: 'Off',
-    batteryVoltage: '48',
-    digitalOutputStatus: 'On',
-    batteryDischargeIndicator: 'Off',
+    Timestamp: new Date(),
+    ActualRPM: '2000',
+    BatteryCurrent: '10',
+    FaultCode: 'None',
+    Subcode: 'None',
+    MotorCurrent: '15',
+    DriveStatusIndicator: 'On',
+    SpeedLimitIndicator: 'Off',
+    ActualTorque: '20',
+    TorqueLimitIndicator: 'Off',
+    ControllerTemperature: '40',
+    MotorTemperature: '50',
+    MotorLimitIndicator: 'Off',
+    BatteryVoltage: '48',
+    DigitalOutputStatus: 'On',
+    BatteryDischargeIndicator: 'Off',
 });
 
 const generateThrottleLog = (): ThrottleLog => ({
-    timestamp: new Date(),
-    motorSpeed: '1000',
-    currentAngle: '45',
-    targetAngle: '90',
+    Timestamp: new Date(),
+    MotorSpeed: '1000',
+    CurrentAngle: '45',
+    TargetAngle: '90',
 });
   
 // Mock data generation function

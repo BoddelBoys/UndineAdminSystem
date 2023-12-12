@@ -44,8 +44,8 @@ const BoatTable: React.FC<BoatDetailsProps> = ({ boats }) => {
       const propertiesToShow = showMore ? Object.keys(firstLogEntry) : Object.keys(firstLogEntry).slice(0, 5);
 
     return (
-      <div className="overflow-x-auto p-4 bg-white mb-4 w-full rounded border p-2 shadow">
-        <h3 className="rounded-t bg-gray-100 px-4 py-2 text-center text-lg font-medium text-gray-700 border border-300">
+      <div className="overflow-x-auto p-4 bg-white mb-4 w-full rounded border p-2 shadow min-h-screen">
+        <h3 className="overflow-x-auto w-full rounded-t bg-gray-100 px-4 py-2 text-center text-lg font-medium text-gray-700 border border-300">
           {logType.charAt(0).toUpperCase() + logType.slice(1)}
         </h3>
         <table className="table-auto w-full">
@@ -77,11 +77,12 @@ const BoatTable: React.FC<BoatDetailsProps> = ({ boats }) => {
           </tbody>
         </table>
         {/* Pagination controls */}
-        <div className="flex justify-between mt-4 text-gray-700">
-        <button
+        <div className="flex justify-between text-gray-700">
+        <button className="rounded bg-gray-200 px-3 py-2 text-gray-700 hover:bg-gray-300"
         onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 0}>Previous</button>
-        <span>Page {currentPage + 1} of {pageCount}</span>
-        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= pageCount - 1}> Next
+        <span >Page {currentPage + 1} of {pageCount}</span>
+        <button className="rounded bg-gray-200 px-3 py-1 text-gray-700 hover:bg-gray-300"
+        onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= pageCount - 1}> Next
         </button>
         </div>
       </div>
@@ -89,35 +90,45 @@ const BoatTable: React.FC<BoatDetailsProps> = ({ boats }) => {
   };
 
   return (
-    <div className="w-full place-items-center overflow-x-auto p-4">
+    <div className="flex flex-col w-full overflow-x-auto p-4">
       <h1 className="mb-4 text-center text-2xl font-medium uppercase text-gray-700">
         Boat Details
       </h1>
-      <div className="mb-4 flex justify-center space-x-4">
-      {(["bmsLogs", "chargerLogs", "coreMCULogs", "motorLogs", "throttleLogs"] as LogType[]).map((logType: LogType) => (
-  <button
-    key={logType}
-    onClick={() => {
-      setSelectedLogType(logType);
-      setCurrentPage(0); // Reset to the first page whenever log type changes
-    }}
-    className={`rounded bg-gray-200 px-4 py-2 font-bold text-gray-700 hover:bg-gray-300 ${
-      selectedLogType === logType ? "bg-gray-300" : ""
-    }`}
-  >
-    {logType.charAt(0).toUpperCase() + logType.slice(1)}
-  </button>
-))}
-    <button className="rounded bg-gray-200 px-4 py-2 font-bold text-gray-700 hover:bg-gray-300" 
-        onClick={() => setShowMore(!showMore)}>{showMore ? 'Show Less' : 'Show More'}
-        </button>
-  </div>
-      <div className="mx-auto flex w-[80%] flex-wrap justify-center">
-        {/* Render the details for the selected log type */}
+      {/* Container for buttons and title */}
+      <div className="flex justify-between items-center mb-4">
+        {/* Centered log type buttons */}
+        <div className="flex justify-center space-x-4 flex-grow">
+          {(["bmsLogs", "chargerLogs", "coreMCULogs", "motorLogs", "throttleLogs"] as LogType[]).map((logType: LogType) => (
+            <button
+              key={logType}
+              onClick={() => {
+                setSelectedLogType(logType);
+                setCurrentPage(0); // Reset to the first page whenever log type changes
+              }}
+              className={`rounded bg-gray-200 px-4 py-2 font-bold text-gray-700 hover:bg-gray-300 ${
+                selectedLogType === logType ? "bg-gray-300" : ""
+              }`}
+            >
+              {logType.charAt(0).toUpperCase() + logType.slice(1)}
+            </button>
+          ))}
+        </div>
+        {/* "Show More" button aligned to the right */}
+        <div className="flex justify-end">
+          <button 
+            className="rounded bg-gray-200 px-4 py-2 font-bold text-gray-700 hover:bg-gray-300" 
+            onClick={() => setShowMore(!showMore)}
+          >
+            {showMore ? 'Show Less' : 'Show More'}
+          </button>
+        </div>
+      </div>
+      {/* Details rendering */}
+      <div className="mx-auto w-full flex-wrap justify-center">
         {selectedLogType && renderLogDetails(selectedLogType)}
       </div>
     </div>
   );
-};
+};  
 
 export default BoatTable;
