@@ -71,7 +71,7 @@ export const lineChartConfig: ChartConfiguration<
     labels: labels,
     datasets: [
       {
-        label: "My First Dataset",
+        label: "Battery level in %",
         data: dataPoints,
         borderColor: "rgb(75, 192, 192)",
         segment: {
