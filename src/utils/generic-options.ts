@@ -1,4 +1,9 @@
 export const genericOptions = {
+  plugins:{
+    legend:{
+      display: false
+    }
+  },
   fill: false,
   responsive: true,
   interaction: {
