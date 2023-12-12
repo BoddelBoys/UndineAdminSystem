@@ -61,77 +61,74 @@ export interface BoatData {
     throttleLogs?: ThrottleLog[];
 }
 
+const generateBmsLog = (): BmsLog => ({
+    timestamp: new Date(),
+    maxAllowableChargingVoltage: '12.5',
+    maxAllowableChargingCurrent: '10',
+    control: 'On',
+    minCellVoltage: '3.2',
+    averageCellVoltage: '3.5',
+    totalVoltage: '48',
+    current: '5',
+    estimatedCharge: '80',
+    estimatedStateOfCharge: 'High',
+  });
+const generateChargerLog = (): ChargerLog => ({
+    timestamp: new Date(),
+    outputVoltage: '13.5',
+    outputChargingVoltage: '12',
+    outputCurrent: '8',
+    chargerStatus: 'Charging',
+});
 
+const generateCoreMCULog = (): CoreMCULog => ({
+    timestamp: new Date(),
+    mosfet: '100',
+    outputVoltage: '12',
+});
+
+const generateMotorLog = (): MotorLog => ({
+    timestamp: new Date(),
+    actualRPM: '2000',
+    batteryCurrent: '10',
+    faultCode: 'None',
+    subcode: 'None',
+    motorCurrent: '15',
+    driveStatusIndicator: 'On',
+    speedLimitIndicator: 'Off',
+    actualTorque: '20',
+    torqueLimitIndicator: 'Off',
+    controllerTemperature: '40',
+    motorTemperature: '50',
+    motorLimitIndicator: 'Off',
+    batteryVoltage: '48',
+    digitalOutputStatus: 'On',
+    batteryDischargeIndicator: 'Off',
+});
+
+const generateThrottleLog = (): ThrottleLog => ({
+    timestamp: new Date(),
+    motorSpeed: '1000',
+    currentAngle: '45',
+    targetAngle: '90',
+});
+  
 // Mock data generation function
 export const MockBoatData = (): BoatData[] => {
     const boatData: BoatData[] = [];
-
-    for (let i = 1; i <= 10; i++) {
-        const newBoatData: BoatData = {
-            boatSystemId: i,
-            boatSystemName: `Victor er sej ${i}`,
-            bmsLogs: [
-                {
-                    timestamp: new Date(),
-                    maxAllowableChargingVoltage: '12.5',
-                    maxAllowableChargingCurrent: '10',
-                    control: 'On',
-                    minCellVoltage: '3.2',
-                    averageCellVoltage: '3.5',
-                    totalVoltage: '48',
-                    current: '5',
-                    estimatedCharge: '80',
-                    estimatedStateOfCharge: 'High',
-                },
-            ],
-            chargerLogs: [
-                {
-                    timestamp: new Date(),
-                    outputVoltage: '13.5',
-                    outputChargingVoltage: '12',
-                    outputCurrent: '8',
-                    chargerStatus: 'Charging',
-                },
-            ],
-            coreMCULogs: [
-                {
-                    timestamp: new Date(),
-                    mosfet: '100',
-                    outputVoltage: '100',
-                },
-            ],
-            motorLogs: [
-                {
-                    timestamp: new Date(),
-                    actualRPM: '2000',
-                    batteryCurrent: '10',
-                    faultCode: 'None',
-                    subcode: '1',
-                    motorCurrent: '15',
-                    driveStatusIndicator: 'OK',
-                    speedLimitIndicator: 'Off',
-                    actualTorque: '50',
-                    torqueLimitIndicator: 'Off',
-                    controllerTemperature: '40',
-                    motorTemperature: '50',
-                    motorLimitIndicator: 'Off',
-                    batteryVoltage: '48',
-                    digitalOutputStatus: 'On',
-                    batteryDischargeIndicator: 'Off',
-                },
-            ],
-            throttleLogs: [
-                {
-                    timestamp: new Date(),
-                    motorSpeed: '100',
-                    currentAngle: '45',
-                    targetAngle: '90',
-                },
-            ],
-        };
-
-        boatData.push(newBoatData);
+  
+    for (let i = 1; i <= 50; i++) {
+      const newBoatData: BoatData = {
+        boatSystemId: i,
+        boatSystemName: `Victor er sej ${i}`,
+        bmsLogs: Array.from({ length: 50 }, generateBmsLog),
+        chargerLogs: Array.from({ length: 50 }, generateChargerLog),
+        coreMCULogs: Array.from({ length: 50 }, generateCoreMCULog),
+        motorLogs: Array.from({ length: 50 }, generateMotorLog),
+        throttleLogs: Array.from({ length: 50 }, generateThrottleLog),
+      };
+      boatData.push(newBoatData);
     }
-
+  
     return boatData;
-};
+  };
