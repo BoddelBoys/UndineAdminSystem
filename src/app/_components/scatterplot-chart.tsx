@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { getScatterplotConfig } from "~/config/scatterplot-chart-config";
-import { scatterData } from "~/types/plottypes";
+import type { scatterData } from "~/types/plottypes";
 
 interface ScatterPlotChartProps {
   data: scatterData[];
