@@ -37,24 +37,37 @@ export const NavBar = () => {
           <ul className="menu min-h-full w-80 bg-base-200 p-4 pt-32 text-base-content">
             {/* Sidebar content here */}
             <li className="py-2">
-              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
-                <Link href="/linechart">Line-Chart</Link>
-              </button>
+              <Link
+                href="/"
+                className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+              >
+                Index
+              </Link>
+            </li>
+
+            <li className="py-2">
+              <Link
+                href="/linechart"
+                className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+              >
+                Linechart
+              </Link>
             </li>
             <li className="py-2">
-              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
-                <Link href="/scatterplot">Scatterplot-Chart</Link>
-              </button>
+              <Link
+                href="/scatterplot"
+                className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+              >
+                Scatterplot
+              </Link>
             </li>
             <li className="py-2">
-              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
-                <Link href="/boatsystems">Boatsystems</Link>
-              </button>
-            </li>
-            <li className="py-2">
-              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
-                <Link href="/boatsystems">Barchart</Link>
-              </button>
+              <Link
+                href="/boatsystems"
+                className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+              >
+                Boatsystems
+              </Link>
             </li>
           </ul>
         </div>
