@@ -51,7 +51,7 @@ const BoatSystems = (props: BoatSystemsProps) => {
           </button>
           <div className="col-span-8"></div>
           <div className="col-span-2 align-text-bottom">
-            {currentPage * 10}-
+            {(currentPage - 1) * 10 + 1}-
             {currentPage * 10 <= data.length ? currentPage * 10 : data.length}{" "}
             of {data.length}
           </div>
