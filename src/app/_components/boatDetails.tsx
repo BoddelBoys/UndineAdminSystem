@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { BoatData } from "~/types/mockBoats";
+import type { BoatData } from "~/types/boattypes";
 
 interface BoatDetailsProps {
   boats: BoatData[];
