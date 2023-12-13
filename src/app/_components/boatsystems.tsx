@@ -33,7 +33,7 @@ const BoatSystems = (props: BoatSystemsProps) => {
         <div className="grid grid-cols-12">
           <button
             className={"btn btn-primary mr-2"}
-            disabled={currentPage >= Math.ceil(data.length / 10) ? false : true}
+            disabled={currentPage === 1 ? true : false}
             onClick={() => {
               console.log(currentPage);
               handleClick(false);
@@ -43,6 +43,7 @@ const BoatSystems = (props: BoatSystemsProps) => {
           </button>
           <button
             className="btn btn-primary ml-2"
+            disabled={currentPage >= Math.ceil(data.length / 10) ? true : false}
             onClick={() => {
               console.log(currentPage);
               handleClick(true);
