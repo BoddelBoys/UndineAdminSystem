@@ -32,7 +32,8 @@ const BoatSystems = (props: BoatSystemsProps) => {
       <div className="overflow-x-auto">
         <div className="grid grid-cols-12">
           <button
-            className="btn btn-primary mr-2"
+            className={"btn btn-primary mr-2"}
+            disabled={currentPage >= Math.ceil(data.length / 10) ? true : false}
             onClick={() => {
               console.log(currentPage);
               handleClick(false);
