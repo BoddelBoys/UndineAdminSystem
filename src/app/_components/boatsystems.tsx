@@ -17,7 +17,7 @@ const BoatSystems = (props: BoatSystemsProps) => {
     let newPage = currentPage;
 
     if (nextpage) {
-      if (currentPage === Math.floor(data.length / 10)) return;
+      if (currentPage >= Math.ceil(data.length / 10)) return;
       newPage = currentPage + 1;
     } else {
       if (currentPage === 1) return;
@@ -28,50 +28,60 @@ const BoatSystems = (props: BoatSystemsProps) => {
     setCurrentPage(newPage);
   };
   return (
-    <div className="overflow-x-auto">
-      <div>
-        <button
-          className="btn btn-primary mr-2"
-          onClick={() => {
-            console.log(currentPage);
-            handleClick(false);
-          }}
-        >
-          back
-        </button>
-        <button
-          className="btn btn-primary ml-2"
-          onClick={() => {
-            console.log(currentPage);
-            handleClick(true);
-          }}
-        >
-          next
-        </button>
-      </div>
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Amount of Entities</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {shownData.map((entry) => (
-            <tr key={entry.boatSystemId}>
-              <td>{entry.boatSystemId}</td>
-              <td>{entry.name}</td>
-              <td>{entry.amountOfEntities}</td>
-              <td>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </td>
+    <div className="w-[50%]">
+      <div className="overflow-x-auto">
+        <div className="grid grid-cols-12">
+          <button
+            className={"btn btn-primary mr-2"}
+            disabled={currentPage === 1 ? true : false}
+            onClick={() => {
+              console.log(currentPage);
+              handleClick(false);
+            }}
+          >
+            back
+          </button>
+          <button
+            className="btn btn-primary ml-2"
+            disabled={currentPage >= Math.ceil(data.length / 10) ? true : false}
+            onClick={() => {
+              console.log(currentPage);
+              handleClick(true);
+            }}
+          >
+            next
+          </button>
+          <div className="col-span-8"></div>
+          <div className="col-span-2 align-text-bottom">
+            {(currentPage - 1) * 10 + 1}-
+            {currentPage * 10 <= data.length ? currentPage * 10 : data.length}{" "}
+            of {data.length}
+          </div>
+        </div>
+        <table className="table text-center">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Amount of Entities</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {shownData.map((entry) => (
+              <tr key={entry.boatSystemId}>
+                <td>{entry.boatSystemId}</td>
+                <td>{entry.name}</td>
+                <td>{entry.amountOfEntities}</td>
+                <td>
+                  <button className="btn btn-accent btn-xs">details</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

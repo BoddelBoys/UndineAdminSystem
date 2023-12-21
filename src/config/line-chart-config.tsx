@@ -1,8 +1,7 @@
 // lineChartConfig.ts
 import type { ChartConfiguration, ChartTypeRegistry, Point } from "chart.js";
 import { genericOptions } from "../utils/generic-options";
-import type { BoatStatus } from "~/interfaces/boat-status";
-
+import type { BoatStatus } from "~/types/boat-status";
 
 const determineSegmentColor = (currentType: string | undefined) => {
   if (currentType === "Sailing") return "rgb(192,75,75)";
@@ -12,12 +11,16 @@ const determineSegmentColor = (currentType: string | undefined) => {
 };
 
 const getLineChartConfig = (
-  allData: BoatStatus[]
-): ChartConfiguration<keyof ChartTypeRegistry, (number | Point | null)[], unknown> => {
+  allData: BoatStatus[],
+): ChartConfiguration<
+  keyof ChartTypeRegistry,
+  (number | Point | null)[],
+  unknown
+> => {
   // Transform BoatStatus data to chart data
-  const labels = allData.map(t => t.time);
-  const chartData = allData.map(t => t.value);
-  
+  const labels = allData.map((t) => t.time);
+  const chartData = allData.map((t) => t.value);
+
   return {
     type: "line",
     data: {
@@ -37,46 +40,47 @@ const getLineChartConfig = (
           spanGaps: true,
         },
         {
-          label: 'Sailing',
+          label: "Sailing",
           data: [],
-          backgroundColor: 'rgb(192,75,75)',
+          backgroundColor: "rgb(192,75,75)",
           hidden: false,
         },
         {
-          label: 'Charging',
+          label: "Charging",
           data: [],
-          backgroundColor: 'rgb(75,192,75)',
+          backgroundColor: "rgb(75,192,75)",
           hidden: false,
         },
       ],
-      
     },
     options: {
       ...genericOptions,
       plugins: {
         tooltip: {
           callbacks: {
-            label: function(context) {
+            label: function (context) {
               const value = context.parsed.y;
               return `Battery level: ${value}%`;
             },
-            labelColor: function(context) {
+            labelColor: function (context) {
               const currentType = allData[context.dataIndex]?.type;
               const color = determineSegmentColor(currentType);
               return {
                 backgroundColor: color,
-                borderColor: color
-              }
+                borderColor: color,
+              };
             },
-          }
+          },
         },
+      },
+      scales: {
+        y: {
+          min: 0,
+          max: 100,
+        },
+      },
     },
-    scales: {
-      y: {
-        min: 0,
-        max: 100,
-    }}  
-  }}
+  };
 };
 
 export default getLineChartConfig;

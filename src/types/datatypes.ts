@@ -141,19 +141,19 @@ export const MockBoatSystemDTO: BoatSystemDTO[] = [
     name: "Boat System 27",
     amountOfEntities: 89012345,
   },
-  {
-    boatSystemId: 28,
-    name: "Boat System 28",
-    amountOfEntities: 34567890,
-  },
-  {
-    boatSystemId: 29,
-    name: "Boat System 29",
-    amountOfEntities: 90123456,
-  },
-  {
-    boatSystemId: 30,
-    name: "Boat System 30",
-    amountOfEntities: 123456789,
-  },
+  // {
+  //   boatSystemId: 28,
+  //   name: "Boat System 28",
+  //   amountOfEntities: 34567890,
+  // },
+  // {
+  //   boatSystemId: 29,
+  //   name: "Boat System 29",
+  //   amountOfEntities: 90123456,
+  // },
+  // {
+  //   boatSystemId: 30,
+  //   name: "Boat System 30",
+  //   amountOfEntities: 123456789,
+  // },
 ];

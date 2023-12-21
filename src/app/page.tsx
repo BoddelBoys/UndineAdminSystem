@@ -1,9 +1,48 @@
+import BarChart from "./_components/bar-chart";
+import Card from "./_components/card";
+import type { MostCommonFaultCode } from "~/types/most-common-fault-code";
+import { getBarchartData } from "~/server/barchart";
+import type { KwhUsage } from "~/types/kwh-usage";
+import { getMostCommonErrorData } from "~/server/mostcommonerrors";
+import { getTotalErrorsData } from "~/server/totalerrors";
+
 export default async function Home() {
+  const title = "KwH Usage";
+
+  const totalErrors = (await getTotalErrorsData()) as number;
+  const mostCommon = (await getMostCommonErrorData()) as MostCommonFaultCode;
+  const barchartData = (await getBarchartData()) as KwhUsage;
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-      {/* <NavBar></NavBar> */}
-      <h1> Front page :) </h1>
-      none of this works without api backend running
+    <main className="flex min-h-screen items-center justify-center space-x-10 bg-slate-100">
+      <div>
+        <Card title={title}>
+          <BarChart data={barchartData}></BarChart>
+        </Card>
+      </div>
+      <div className="space-y-5">
+        <Card title="Most common error code">
+          <div className="font-mediumbold">
+            <div className="flex space-x-4">
+              <h2 className="py-1 text-lg">Error code:</h2>
+              <h3 className="rounded border-2 border-slate-200 px-2 text-2xl font-semibold">
+                {mostCommon.faultCodeId}
+              </h3>
+            </div>
+            <div className="flex space-x-4">
+              <h2 className="py-1 text-lg">Amount of:</h2>
+              <h3 className="rounded border-2 border-slate-200 px-2 text-2xl font-semibold">
+                {mostCommon.count}
+              </h3>
+            </div>
+          </div>
+        </Card>
+        <Card title="Total errors">
+          <div className="justify-center text-center text-4xl font-semibold">
+            {totalErrors}
+          </div>
+        </Card>
+      </div>
     </main>
   );
 }

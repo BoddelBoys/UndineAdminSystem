@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <NavBar />
-        {children}
+        <div className="bg-slate-100">{children}</div>
       </body>
     </html>
   );
