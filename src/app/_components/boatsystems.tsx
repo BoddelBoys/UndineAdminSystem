@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { BoatSystemDTO } from "~/types/datatypes";
 
 interface BoatSystemsProps {
@@ -75,7 +76,12 @@ const BoatSystems = (props: BoatSystemsProps) => {
                 <td>{entry.name}</td>
                 <td>{entry.amountOfEntities}</td>
                 <td>
-                  <button className="btn btn-accent btn-xs">details</button>
+                  <Link
+                    href="/boatdetails"
+                    className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+                  >
+                    Boatsystems
+                  </Link>
                 </td>
               </tr>
             ))}
