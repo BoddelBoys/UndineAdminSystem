@@ -1,16 +1,12 @@
-"use client";
-import React from "react";
-import BoatTable from "~/app/_components/boatDetails";
-import { MockBoatData } from "~/types/boattypes";
+import BoatTable from "../_components/boatDetails";
 
-const BoatPage = () => {
-  const boatDataArray = MockBoatData();
+import { getBoatDetailsData } from "~/server/boatdetails";
 
+export default async function Home() {
+  const data = await getBoatDetailsData();
   return (
-    <div style={{ backgroundColor: "white" }}>
-      <BoatTable boats={boatDataArray} />
-    </div>
+    <main className=" mx-auto flex min-h-screen w-[90%] flex-col items-center justify-center">
+      <BoatTable boats={data} />
+    </main>
   );
-};
-
-export default BoatPage;
+}

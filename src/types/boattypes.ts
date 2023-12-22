@@ -52,8 +52,6 @@ export interface ThrottleLog {
 }
 
 export interface BoatData {
-  boatSystemId: number;
-  boatSystemName: string;
   bmsLogs?: BmsLog[];
   chargerLogs?: ChargerLog[];
   coreMCULogs?: CoreMCULog[];

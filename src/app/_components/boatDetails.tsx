@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import type { BoatData } from "~/types/boattypes";
 
@@ -35,7 +36,6 @@ const BoatTable: React.FC<BoatDetailsProps> = ({ boats }) => {
 
     // Before accessing displayLogs[0], ensures it's defined
     const firstLogEntry = displayLogs[0];
-
     if (!firstLogEntry) {
       return <div>No logs available.</div>;
     }
