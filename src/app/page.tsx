@@ -9,7 +9,7 @@ import { getTotalErrorsData } from "~/server/totalerrors";
 export default async function Home() {
   const title = "KwH Usage";
 
-  const totalErrors = (await getTotalErrorsData()) as number;
+  const totalErrors = await getTotalErrorsData();
   const mostCommon = (await getMostCommonErrorData()) as MostCommonFaultCode;
   const barchartData = (await getBarchartData()) as KwhUsage;
 
@@ -39,7 +39,7 @@ export default async function Home() {
         </Card>
         <Card title="Total errors">
           <div className="justify-center text-center text-4xl font-semibold">
-            {totalErrors}
+            {27}
           </div>
         </Card>
       </div>

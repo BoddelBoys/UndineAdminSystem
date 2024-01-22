@@ -6,5 +6,5 @@ export const getTotalErrorsData = async () => {
     {},
   );
   const data = await fetchedData.json();
-  return data;
+  return data as number;
 };

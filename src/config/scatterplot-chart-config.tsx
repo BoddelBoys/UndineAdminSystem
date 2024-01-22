@@ -100,6 +100,8 @@ export const getScatterplotConfig = (
             display: true,
             text: "TIME",
           },
+          max: 200,
+          min: 0
         },
       },
     },
