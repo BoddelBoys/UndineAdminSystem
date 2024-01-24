@@ -1,8 +1,8 @@
 export const genericOptions = {
-  plugins:{
-    legend:{
-      display: false
-    }
+  plugins: {
+    legend: {
+      display: false,
+    },
   },
   fill: false,
   responsive: true,
@@ -10,5 +10,5 @@ export const genericOptions = {
     intersect: false,
   },
   radius: 1,
-  screenY: 0
+  screenY: 0,
 };

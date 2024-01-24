@@ -1,5 +1,5 @@
-import { getLinechartData } from "~/server/linechart";
-import LineChart from "../_components/line-chart";
+import { getLinechartData } from "~/server/line-chart";
+import LineChart from "../_components/LineChart";
 
 export default async function Home() {
   const data = await getLinechartData();

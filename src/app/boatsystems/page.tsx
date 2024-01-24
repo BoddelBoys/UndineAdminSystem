@@ -1,5 +1,5 @@
-import { getBoatSystemsData } from "~/server/boatsystems";
-import BoatSystems from "../_components/boatsystems";
+import { getBoatSystemsData } from "~/server/boat-systems";
+import BoatSystems from "../_components/BoatSystems";
 
 export default async function Home() {
   const data = await getBoatSystemsData();

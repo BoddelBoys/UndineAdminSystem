@@ -15,7 +15,7 @@ const getBarChartConfig = (
       labels: ["Hydro", "Sail", "Charge"], // Labels for each bar
       datasets: [
         {
-          label: "KwH Usage",
+          label: "kWh Usage",
           data: [data.hydrogeneratedKwH, data.sailedKwHUsed, data.chargedKwH], // Data for each category
           backgroundColor: [
             "rgb(75,75,192)",

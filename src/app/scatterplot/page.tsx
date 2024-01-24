@@ -1,4 +1,4 @@
-import ScatterPlotChart from "../_components/scatterplot-chart";
+import ScatterPlotChart from "../_components/ScatterplotChart";
 
 import { getScatterplotData } from "~/server/scatterplot";
 

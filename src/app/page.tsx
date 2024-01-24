@@ -1,10 +1,10 @@
-import BarChart from "./_components/bar-chart";
-import Card from "./_components/card";
+import BarChart from "./_components/BarChart";
+import Card from "./_components/Card";
 import type { MostCommonFaultCode } from "~/types/most-common-fault-code";
-import { getBarchartData } from "~/server/barchart";
+import { getBarchartData } from "~/server/bar-chart";
 import type { KwhUsage } from "~/types/kwh-usage";
-import { getMostCommonErrorData } from "~/server/mostcommonerrors";
-import { getTotalErrorsData } from "~/server/totalerrors";
+import { getMostCommonErrorData } from "~/server/most-common-errors";
+import { getTotalErrorsData } from "~/server/total-errors";
 
 export default async function Home() {
   const title = "KwH Usage";
